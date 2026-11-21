@@ -116,10 +116,16 @@ function navigation(){
     
 }
 
+search.addEventListener('input', function(){
+    componentsFilter()
+})
 
 
 
 function renderComponents(components, category) {
+    const query = search.value.trim().toLowerCase()
+    components = components.filter(c => (c.vendor + ' ' + c.model).toLowerCase().includes(query))
+    
     const grid = document.querySelector(".grid");
     grid.innerHTML = "";
     // if (components == null) {
